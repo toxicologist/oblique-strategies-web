@@ -3,28 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Oblique Strategies Online</title>
+    <style>
+        #navbar {
+            margin-bottom: 20px;
+        }
+
+        .nav-button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 <div style="text-align:center;">
     <h1>Oblique Strategies</h1>
 
-    <div id="apiKeySection">
-        <h3>Enter your API key</h3>
-        <p>This script uses the truly random quantum number generator from ANU.<br/>
-            In order to use it, go to <a href="https://quantumnumbers.anu.edu.au/" target="_blank">their website</a> and sign up for a free account.
-            <br/>Then, go to 'API keys', copy your key and paste it below.
-        </p>
-        <input type="text" name="apikey" id="apikey" size="50"><br/><br/>
-        <button id="saveApiKeyButton">Save API Key</button>
-
+    <div id="navbar" style="text-align:center;">
+    <button class="nav-button" onclick="showSection('ask')">Ask</button>
+    <button class="nav-button" onclick="showSection('history')">History</button>
+    <button class="nav-button" onclick="showSection('about')">About</button>
     </div>
 
-    <h3>Enter your question</h3>
-    <input type="text" name="question" id="question" size="50" disabled><br/><br/>
-    <button id="submitbutton" disabled>Ask</button>
+    <div id="ask" class="section">
+        <div id="apiKeySection">
+            <h3>Enter your API key</h3>
+            <p>This script uses the truly random quantum number generator from ANU.<br/>
+                In order to use it, go to <a href="https://quantumnumbers.anu.edu.au/" target="_blank">their website</a> and sign up for a free account.
+                <br/>Then, go to 'API keys', copy your key and paste it below.
+            </p>
+            <input type="text" name="apikey" id="apikey" size="50"><br/><br/>
+            <button id="saveApiKeyButton">Save API Key</button>
 
-    <h4 id="interfacetext"></h4>
-    <h2 id="answer"></h2>
+        </div>
+
+        <div id="questionSection">
+            <h3>Enter your question</h3>
+            <input type="text" name="question" id="question" size="50" disabled><br/><br/>
+            <button id="submitbutton" disabled>Ask</button>
+
+            <h4 id="interfacetext"></h4>
+            <h2 id="answer"></h2>
+        </div>
+    </div>
+
+    <div id="history" class="section" style="display:none;">
+        <!--<button onclick="toggleReadingsHistory()">View Previous Readings</button>-->
+        <div id="readings" style="text-align:center;">
+    </div>
+
+    <div id="about" class="section" style="display:none;">
+        <p>About content...</p>
+    </div>
+
+    </div>
 
 </div>
 <script>
@@ -48,6 +79,8 @@
             document.getElementById('submitbutton').disabled = false;
             document.getElementById('apiKeySection').style.display = 'none';
         }
+
+        displayReadingsHistory();
     });
     document.getElementById('saveApiKeyButton').addEventListener('click', function() {
         var apiKey = document.getElementById('apikey').value;
@@ -80,7 +113,7 @@
 
         var count = 1;
         var interval = setInterval(function() {
-            if (count <= 20) {
+            if (count <= {{ wait_time }}) {
                 interfacetext.innerText = "Mentalize your intention... " + count;
                 count++;
             } else {
@@ -101,6 +134,9 @@
                         .then(response => response.json())
                         .then(data => {
                             interfacetext.innerText = "Result:"
+                            var question = document.getElementById('question').value;
+                            saveReadingToHistory(question, data.strategy);  // Save the reading along with the question
+                            displayReadingsHistory();  // Update the readings history
                             setTimeout(function() {answer.innerText = data.strategy;}, 1000);
                         })
                         .catch(error => {
@@ -132,6 +168,54 @@
         }
         return null;
     }
+
+    function saveReadingToHistory(question, reading) {
+        // Get existing history from local storage
+        let history = JSON.parse(localStorage.getItem('readingsHistory')) || [];
+
+        // Add the new entry
+        history.push({ question: question, reading: reading });
+
+        // Save back to local storage
+        localStorage.setItem('readingsHistory', JSON.stringify(history));
+    }
+
+    function toggleReadingsHistory() {
+        // If the history is currently displayed, hide it
+        // If it is hidden, show it and run displayReadingsHistory()
+        let historyDiv = document.getElementById('readings');
+        if (historyDiv.style.display === 'none') {
+            historyDiv.style.display = 'block';
+            displayReadingsHistory();
+        } else {
+            historyDiv.style.display = 'none';
+        }
+    }
+
+    function displayReadingsHistory() {
+        let historyDiv = document.getElementById('readings');
+        let history = JSON.parse(localStorage.getItem('readingsHistory')) || [];
+
+        historyDiv.innerHTML = '<h3>Previous Readings:</h3>';
+        history.forEach(function(entry, index) {
+            historyDiv.innerHTML += `<p><b>${index + 1}. Question:</b> ${entry.question} <br><b>Reading:</b> ${entry.reading}</p>`;
+        });
+    }
+
+    function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('.section').forEach(function(section) {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    // Initialize the page by showing the 'ask' section
+    document.addEventListener('DOMContentLoaded', function() {
+        showSection('ask');
+    });
 </script>
 
 </body>
