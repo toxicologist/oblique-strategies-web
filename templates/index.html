@@ -10,8 +10,13 @@
 
     <div id="apiKeySection">
         <h3>Enter your API key</h3>
+        <p>This script uses the truly random quantum number generator from ANU.<br/>
+            In order to use it, go to <a href="https://quantumnumbers.anu.edu.au/" target="_blank">their website</a> and sign up for a free account.
+            <br/>Then, go to 'API keys', copy your key and paste it below.
+        </p>
         <input type="text" name="apikey" id="apikey" size="50"><br/><br/>
         <button id="saveApiKeyButton">Save API Key</button>
+
     </div>
 
     <h3>Enter your question</h3>
@@ -75,7 +80,7 @@
 
         var count = 1;
         var interval = setInterval(function() {
-            if (count <= 2) {
+            if (count <= 20) {
                 interfacetext.innerText = "Mentalize your intention... " + count;
                 count++;
             } else {

@@ -13,7 +13,7 @@ Breathe more deeply
 Bridges -build -burn
 Cascades
 Change instrument roles
-    Change nothing and continue with immaculate consistency
+Change nothing and continue with immaculate consistency
 Children's voices -speaking -singing
 Cluster analysis
 Consider different fading systems
@@ -67,11 +67,9 @@ Listen to the quiet voice
 Look at a very small object, look at its centre
 Look at the order in which you do things
 Look closely at the most embarrassing details and amplify them
-Lowest common denominator check -single beat -single note -single
-riff
+Lowest common denominator check -single beat -single note -single riff
 Make a blank valuable by putting it in an exquisite frame
-Make an exhaustive list of everything you might do and do the last
-thing on the list
+Make an exhaustive list of everything you might do and do the last thing on the list
 Make a sudden, destructive unpredictable action; incorporate
 Mechanicalize something idiosyncratic
 Mute and continue
@@ -84,8 +82,7 @@ Remove ambiguities and convert to specifics
 Remove specifics and convert to ambiguities
 Repetition is a form of change
 Reverse
-Short circuit (example: a man eating peas with the idea that they will
-improve his virility shovels them straight into his lap)
+Short circuit (example: a man eating peas with the idea that they will improve his virility shovels them straight into his lap)
 Shut the door and listen from outside
 Simple subtraction
 Spectrum analysis
@@ -103,7 +100,7 @@ Use an old idea
 Use an unacceptable color
 Use fewer notes
 Use filters
-Use `unqualified' people
+Use 'unqualified' people
 Water
 What are you really thinking about just now? Incorporate
 What is the reality of the situation?
