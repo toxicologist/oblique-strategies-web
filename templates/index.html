@@ -37,7 +37,7 @@
         </div>
 
         <div id="questionSection">
-            <h3>Enter your question</h3>
+            <h3>Enter your question (or leave it blank)</h3>
             <input type="text" name="question" id="question" size="50" disabled><br/><br/>
             <button id="submitbutton" disabled>Ask</button>
 
@@ -105,11 +105,6 @@
         var question = document.getElementById('question').value;
         var interfacetext = document.getElementById('interfacetext');
         var answer = document.getElementById('answer');
-
-        if (!question) {
-            interfacetext.innerText = 'Please enter a question.';
-            return;
-        }
 
         // Clear previous answer and interface text
         interfacetext.innerText = '';
