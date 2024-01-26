@@ -41,7 +41,7 @@ def get_strategy():
 @app.route('/')
 def index():
     # return index.html template
-    wait_time = 20
+    wait_time = 30
 
     return render_template('index.html', wait_time=wait_time)
 
