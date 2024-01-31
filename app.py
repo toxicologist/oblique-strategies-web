@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from strategies import strategies
+from maxims import maxims
 import requests
 
 app = Flask(__name__)
@@ -38,12 +39,22 @@ def get_strategy():
         return jsonify({'strategy': random.choice(strategies)[0]})
 
 
-@app.route('/')
-def index():
-    # return index.html template
+@app.route('/oblique')
+def oblique():
+    # return oblique_strategies.html template
     wait_time = 30
 
-    return render_template('index.html', wait_time=wait_time)
+    return render_template('oblique_strategies.html', wait_time=wait_time, show_title_icon=True)
+
+
+@app.route('/delphi')
+def delphi():
+    return render_template('delphi.html', entrance=maxims[:3], maxims=enumerate(maxims[3:]), show_title_icon=True)
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', show_title_icon=True)
 
 
 if __name__ == '__main__':

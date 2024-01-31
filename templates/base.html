@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<style>h2,h3,#subtext{text-shadow: 2px 2px 8px #000000;}</style>
+<title>{% block title %}{% endblock %} - SIIALT</title>
+<link rel='stylesheet' type='text/css' href='../static/main.css'/>
+<link rel='icon' type='image/x-icon' href='../static/favicon.ico'/>
+{% if bgimage%}
+<body style="background-image: url('../static/imgs/{% block bgimage %}{% endblock %}'); text-align: center;">
+{%endif %}
+<div id="wrapper">
+<nav><div id="header"><div><br/>
+        {% if show_title_icon %}{% endif %}<a href="/" class="title"><img src="../static/imgs/Y branco.png" width="10%"></a></div>
+    <div id='subtext'>{% block subtext %}{% endblock %}</div>
+</div>
+</nav>{% with messages = get_flashed_messages() %}{% if messages %}{% for message in messages %}<h3>{{ message }}</h3>
+{% endfor %}{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+</div><div id="footer">
+{% block footer %}{% endblock %}<br/>
+<a href='' id='footer-url'></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+@font-face {
+    font-family: Futura;
+    src: url("futura light bt.ttf");
+}
+
+#navbar {
+	margin-bottom: 20px;
+}
+
+.nav-button {
+	margin: 5px;
+	padding: 10px;
+}
+
+html, body{
+	text-align: center;
+	background-color: #101010;
+	color: white;
+	height: 99%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+body{
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+#wrapper{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin-bottom: -40px;
+}
+
+button{
+	font-family: Futura;
+}
+
+a#footer{
+	font-style: normal;
+	text-decoration: underline;
+	font-size: 90%;
+	color: dimgrey;
+}
+
+a#footer-url{
+    font-style: normal;
+    text-decoration: none;
+    font-size: 85%;
+    color: #454545;
+}
+#footer, #push{
+	height: 0;
+}
+
+h2, h3{
+	text-shadow: 2px 2px 8px #000000;
+}
+
+#title{
+	font-size: 450%;
+	padding: 1.5%;
+}
+
+a.title{
+	text-decoration: none;
+	color: whitesmoke;
+	text-shadow: 0 0 5px black, 0 0 5px black, 0 0 5px black, 0 0 5px black;
+
+}
+
+/* decorate links for dark mode */
+a:link {
+	color: #00FF00;
+}
+/* visited link */
+a:visited {
+	color: #FF00FF;
+}
+
+#subtext{
+	color: Silver;
+	font-size: 150%;
+	font-style: italic;
+	padding-bottom: 3%;
+	text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+}
+
+#error{
+	color: Red;
+	font-size: 150%;
+	padding-top: 3%;
+}
+
+button{
+	border:none;
+	font-weight: bold;
+	padding: 10px 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+#mesa{
+	border: 2px white;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#mesa tr{
+	border: 2px white;
+}
+
+#mesa td{
+	border: 2px white;
+}
+
+#about ul{
+	font-size: 120%;
+	display: block;
+	text-align: left;
+	list-style-type: none;
+	margin-bottom: 1em;
+	text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+}
+
+   /* ========================= */
+   @keyframes rainbold {
+   0% { color: red; text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet; }
+   14% { color: orange; text-shadow: -1px 0px yellow, -2px 0px green, -3px 0px blue, -4px 0px indigo, -5px 0px violet, -6px 0px red; }
+   28% { color: yellow; text-shadow: -1px 0px green, -2px 0px blue, -3px 0px indigo, -4px 0px violet, -5px 0px red, -6px 0px orange; }
+   43% { color: green; text-shadow: -1px 0px blue, -2px 0px indigo, -3px 0px violet, -4px 0px red, -5px 0px orange, -6px 0px yellow; }
+   57% { color: blue; text-shadow: -1px 0px indigo, -2px 0px violet, -3px 0px red, -4px 0px orange, -5px 0px yellow, -6px 0px green; }
+   71% { color: indigo; text-shadow: -1px 0px violet, -2px 0px red, -3px 0px orange, -4px 0px yellow, -5px 0px green, -6px 0px blue; }
+   85% { color: violet; text-shadow: -1px 0px red, -2px 0px orange, -3px 0px yellow, -4px 0px green, -5px 0px blue, -6px 0px indigo; }
+   100% { color: red; text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet; }
+   }
+   @-moz-keyframes rainbold {
+   0% { color: red; text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet; }
+   14% { color: orange; text-shadow: -1px 0px yellow, -2px 0px green, -3px 0px blue, -4px 0px indigo, -5px 0px violet, -6px 0px red; }
+   28% { color: yellow; text-shadow: -1px 0px green, -2px 0px blue, -3px 0px indigo, -4px 0px violet, -5px 0px red, -6px 0px orange; }
+   43% { color: green; text-shadow: -1px 0px blue, -2px 0px indigo, -3px 0px violet, -4px 0px red, -5px 0px orange, -6px 0px yellow; }
+   57% { color: blue; text-shadow: -1px 0px indigo, -2px 0px violet, -3px 0px red, -4px 0px orange, -5px 0px yellow, -6px 0px green; }
+   71% { color: indigo; text-shadow: -1px 0px violet, -2px 0px red, -3px 0px orange, -4px 0px yellow, -5px 0px green, -6px 0px blue; }
+   85% { color: violet; text-shadow: -1px 0px red, -2px 0px orange, -3px 0px yellow, -4px 0px green, -5px 0px blue, -6px 0px indigo; }
+   100% { color: red; text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet; }
+   }
+   @-webkit-keyframes rainbold {
+   0% { color: red; text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet; }
+   14% { color: orange; text-shadow: -1px 0px yellow, -2px 0px green, -3px 0px blue, -4px 0px indigo, -5px 0px violet, -6px 0px red; }
+   28% { color: yellow; text-shadow: -1px 0px green, -2px 0px blue, -3px 0px indigo, -4px 0px violet, -5px 0px red, -6px 0px orange; }
+   43% { color: green; text-shadow: -1px 0px blue, -2px 0px indigo, -3px 0px violet, -4px 0px red, -5px 0px orange, -6px 0px yellow; }
+   57% { color: blue; text-shadow: -1px 0px indigo, -2px 0px violet, -3px 0px red, -4px 0px orange, -5px 0px yellow, -6px 0px green; }
+   71% { color: indigo; text-shadow: -1px 0px violet, -2px 0px red, -3px 0px orange, -4px 0px yellow, -5px 0px green, -6px 0px blue; }
+   85% { color: violet; text-shadow: -1px 0px red, -2px 0px orange, -3px 0px yellow, -4px 0px green, -5px 0px blue, -6px 0px indigo; }
+   100% { color: red; text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet; }
+   }
+   @keyframes piss1 { from { color: rgb(255, 0, 0); } 16.6% { color: rgb(255, 0, 255); } 33.3% { color: rgb(0, 0, 255); } 50% { color: rgb(0, 255, 255); } 66.6% { color: rgb(0, 255, 0); } 83.3% { color: rgb(255, 255, 0); } to { color: rgb(255, 0, 0); } }
+   @keyframes piss2 { 0% { background-position-x:0%; } 100% { background-position-x:100%; } }
+   @keyframes piss3 { 0% { background-position: 0% 50%} 50%  { background-position:100% 50%} 100% { background-position:  0% 50%} }
+   @keyframes piss4 { to { background-position: 200% center; } }
+   textarea.pissText {font-family: monospace; font-size: 130%;}
+   .pissText{ background: repeating-linear-gradient(-45deg,red,red 20px,blue 20px,blue 40px); background-size:56px 56px; background-position-x:0%; animation: piss2 20s infinite linear forwards; background: linear-gradient(270deg, #ff0000, #ffa600, #fff500, #06ff00, #00c9ff, #2300ff, #ff00fa, #ff0000); background-size: 1600% 1600%; animation: piss3 30s ease infinite;  background: linear-gradient(to right, #ff0000, #ffa600, #fff500, #06ff00, #00c9ff, #2300ff, #ff00fa, #ff0000); background-size: 200% auto; color: #000; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: piss4 1s linear infinite; }
+   span.pissText3 { color:#fff; -webkit-animation:glow3 1s ease-in-out infinite alternate; -moz-animation:glow3 1s ease-in-out infinite alternate; animation:glow3 1s ease-in-out infinite alternate; }
+   @-webkit-keyframes glow3{ 0%{ text-shadow:0 0 .5em #fff,0 0 .6em #fff; } to{ text-shadow:0 0 1.1em #0f0,0 0 1.2em #0f0; } }
+   /* ========================= */

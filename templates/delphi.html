@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Delphic Maxims{% endblock %}
+{% block content %}
+<h1>The Delphic Maxims</h1>
+<p><i>
+    The Delphic Maxims are a series of 147 maxims, originally attributed to the divine Apollo himself,
+    which were inscribed on the Temple of Apollo at Delphi. They represent the best available synthesis
+    of Hellenic morality, philosophy and thought. The version we present here was preserved by Joanes Stobaeus,
+    a scholar from the 5th century AD, and has been corroborated by various archeological discoveries of
+    different partial copies of the maxims, the earliest of which dates to the 3rd century BC.
+    Thus, these sayings are very likely to authentically represent those which were inscribed
+    in the Delphic temple walls. Meditate and reflect on them deeply, for they contain a huge amount of wisdom.
+</i></p><br/>
+    <img style="max-width: 100%" src="/static/Delphi_by_Albert_Tournaire.jpg" alt="Delphi (1894), by french painter Albert Tournaire">
+    <i>Delphi (1894), by french painter Albert Tournaire</i><br/>
+<br/>
+    <h2>The Entrance Maxims</h2>
+    <p>Three maxims are said to have been inscribed at the entrance of the temple, as being most important of all. These are:</p>
+    <ol>
+    {% for m in entrance %}
+        <li style="line-height: 1.4;font-weight:bold; font-size:large;">{{ m }}</li>
+    {% endfor %}
+    </ol>
+<br/>
+    <h2>The 147 Maxims</h2>
+<p>The remaining 147 maxims are supposed to have been written in various places around the temple. As stated above,
+they are found in a few different ancient sources so they were well known around Greece. They are:</p>
+
+    <ol>
+    {% for i, m in maxims %}
+        <li style="line-height: 1.4;font-weight:bold; font-size:large;">{{ m }}</li>
+        {% if i % 10 == 9 %}
+        <br/>
+        {% endif %}
+    {% endfor %}
+    </ol>
+    <br/>
+    <img src="/static/imgs/ouroboros.gif">
+    <br/><br/>
+{% endblock %}
