@@ -129,6 +129,25 @@ button{
 	text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
 }
 
+@media (max-width: 768px) {
+    body {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    h1, h2 {
+        font-size: 1.5em; /* Reduz o tamanho das fontes para telas menores */
+    }
+
+    #wrapper {
+        margin-bottom: 20px;
+    }
+
+    nav img {
+        width: 20%; /* Aumenta o tamanho do logo no mobile */
+    }
+}
+
    /* ========================= */
    @keyframes rainbold {
    0% { color: red; text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet; }

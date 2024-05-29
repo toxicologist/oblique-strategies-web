@@ -1,9 +1,12 @@
 <!doctype html>
 <html lang="en">
-<style>h2,h3,#subtext{text-shadow: 2px 2px 8px #000000;}</style>
-<title>{% block title %}{% endblock %} - SIIALT</title>
-<link rel='stylesheet' type='text/css' href='../static/main.css'/>
-<link rel='icon' type='image/x-icon' href='../static/favicon.ico'/>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>h2,h3,#subtext{text-shadow: 2px 2px 8px #000000;}</style>
+    <title>{% block title %}{% endblock %} - SIIALT</title>
+    <link rel='stylesheet' type='text/css' href='../static/main.css'/>
+    <link rel='icon' type='image/x-icon' href='../static/favicon.ico'/>
+</head>
 {% if bgimage%}
 <body style="background-image: url('../static/imgs/{% block bgimage %}{% endblock %}'); text-align: center;">
 {%endif %}

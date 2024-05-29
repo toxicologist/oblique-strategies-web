@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 from strategies import strategies
 from maxims import maxims
+from proverbios import proverbios_text
 import requests
 
 app = Flask(__name__)
@@ -50,6 +51,12 @@ def oblique():
 @app.route('/delphi')
 def delphi():
     return render_template('delphi.html', entrance=maxims[:3], maxims=enumerate(maxims[3:]), show_title_icon=True)
+
+
+@app.route('/proverbios')
+def proverbios():
+    print(type(proverbios))
+    return render_template('proverbios.html', proverbios=proverbios_text, show_title_icon=True)
 
 
 @app.route('/')

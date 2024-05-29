@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Provérbios do Inferno{% endblock %}
+{% block content %}
+<h1>Provérbios do Inferno</h1>
+<p><i>
+    Tradução dos Proverbs of Hell, da obra de William Blake, "The Marriage of Heaven and Hell" (1790).
+</i></p><br/>
+    <img style="max-width: 100%" src="/static/hell.png" alt="Hell">
+    <i>Hell (from plate 3 in The Marriage of Heaven and Hell)</i><br/>
+<br/>
+
+    <h2>A História</h2>
+    <p>tbf</p>
+<br/>
+    <h2>Os Provérbios</h2>
+    <ul style="list-style-type: none;">
+    {% for m in proverbios %}
+        {% if m|length < 2 %}
+        <br/>
+        {% else %}
+        <li style="line-height: 1.4; font-size:large; margin-bottom:5px;">{{ m }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <br/>
+    <img src="/static/imgs/ouroboros.gif">
+    <br/><br/>
+{% endblock %}
