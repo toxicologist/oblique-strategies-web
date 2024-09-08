@@ -8,12 +8,19 @@ from tao import get_tao
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped, mapped_column
+from flask_caching import Cache
 import requests
 import random
 
 app = Flask(__name__)
 USE_REAL_API = True
 
+
+### FLASK CACHING stuff ###
+app.config['CACHE_TYPE'] = 'simple'
+app.config['CACHE_DEFAULT_TIMEOUT'] = 3600
+cache = Cache(app)
+### END FLASK CACHING stuff ###
 
 ### SQLAlchemy stuff ###
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///stats.db'
@@ -48,12 +55,18 @@ def get_views():
     q = db.session.execute(db.select(Stat)).scalars().all()
     return ['%s: %s' % (s.page, s.viewcount) for s in q]
 
+
+@app.before_request
+def count_view_automatically():
+    DONT_COUNT_VIEWS = ['static', 'get-strategy']
+    if not any([d in request.path for d in DONT_COUNT_VIEWS]):
+        add_page_view(request.path)
+
 ### END SQLAlchemy stuff ###
 
 
 @app.route('/get-strategy', methods=['POST'])
 def get_strategy():
-    add_page_view('/get-strategy')
     data = request.json
 
     if USE_REAL_API:
@@ -85,8 +98,8 @@ def get_strategy():
 
 
 @app.route('/oblique')
+@cache.cached()
 def oblique():
-    add_page_view('/oblique')
     # return oblique_strategies.html template
     wait_time = 30
 
@@ -94,26 +107,24 @@ def oblique():
 
 
 @app.route('/delphi')
+@cache.cached()
 def delphi():
-    add_page_view('/delphi')
     return render_template('delphi.html', entrance=maxims[:3], maxims=enumerate(maxims[3:]), show_title_icon=True)
 
 
 @app.route('/proverbios')
+@cache.cached()
 def proverbios():
-    add_page_view('/proverbios')
     return render_template('proverbios.html', proverbios=proverbios_text, show_title_icon=True)
 
 
 @app.route('/tao')
 def tao_te_ching():
-    add_page_view('/tao')
     return render_template('tao.html', tao=get_tao(), show_title_icon=True)
 
 
 @app.route('/tao-random')
 def random_tao():
-    add_page_view('/tao-random')
     tao = get_tao()
     i = random.randint(0, len(tao) - 1)
     verse = tao[i]
@@ -121,8 +132,8 @@ def random_tao():
 
 
 @app.route('/')
+@cache.cached()
 def index():
-    add_page_view('/')
     return render_template('index.html', show_title_icon=True)
 
 

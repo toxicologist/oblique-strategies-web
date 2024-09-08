@@ -2,3 +2,4 @@ requests
 Flask
 markdown
 flask-sqlalchemy
+Flask-Caching
