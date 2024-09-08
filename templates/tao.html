@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Tao te Ching{% endblock %}
+{% block css %}
+    <style>
+    /* padding-left only for desktop & tablet width */
+    .left-align{
+        text-align: left;
+    }
+    p{
+        white-space: pre-wrap;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<h1>Tao te Ching</h1>
+<h2>O Livro do Caminho e da Virtude</h2>
+    <img style="max-width: 100%" src="/static/Calligraphic_Dao.png" alt="Dao">
+<br/><p><i>Tradução Brasileira - S.I.I.
+</i></p><br/>
+    <div class="left-align">
+    <h2>Breve Introdução</h2>
+    <p>O Tao te Ching (também escrito Dao de Jing, que é mais próximo à pronúncia chinesa) é um dos grandes clássicos da literatura oriental. Livro de imensa antiguidade e sabedoria, é tradicionalmente atribuído a Lao Tsé, um sábio que viveu ao redor do século XII A.C.</p>
+    <p>Seu título significa literalmente “O Livro (Jing) do Caminho (Dao) e da Virtude (De).” Ele é organizado de forma poética, em versos que são subdivididos em 81 capítulos. Não tem uma ordem específica ou progressiva, podendo ser lido a partir de qualquer ponto.</p>
+<p>É uma leitura excelente e iluminadora. Dentro destes versos encontra-se um manual para viver uma vida mais plena, em harmonia com si mesmo, com os outros e com o ambiente ao redor, com paz interior e compaixão, sendo uma luz no mundo, seguindo sua própria força interior. Recomendamos fortemente!</p>
+    <p>Esta tradução é baseada tanto no texto original chinês como em traduções em inglês e em português. O intuito é ter uma tradução clara e simples, que seja fiel ao texto original e aos conceitos nele exprimidos. Muitas traduções são demasiado prolixas ou formais, ou caem no erro de expressar as visões do tradutor e não de Lao-Tsé. Esperamos evitar estes erros aqui. Boa leitura! </p>
+
+<br/>
+    {% for chapter in tao %}
+        <h2>{{ loop.index }}</h2>
+        {{ chapter|safe }}<br/>
+    {% endfor %}
+    </div>
+    <br/>
+    <img src="/static/imgs/ouroboros.gif">
+    <br/><br/>
+{% endblock %}

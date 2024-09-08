@@ -14,7 +14,7 @@
 
 html, body{
 	text-align: center;
-	background-color: #101010;
+	background-color: #151515;
 	color: white;
 	height: 99%;
 	background-repeat: no-repeat;
@@ -55,8 +55,17 @@ a#footer-url{
 	height: 0;
 }
 
+h1, h2, h3{
+	font-family: Futura, "Times New Roman", Times, serif;
+}
+
 h2, h3{
-	text-shadow: 2px 2px 8px #000000;
+	text-shadow: 2px 2px 8px #454545;
+}
+
+pre{
+	font-family: Futura, "Times New Roman", Times, serif;
+	font-size: 100%;
 }
 
 #title{
@@ -77,7 +86,7 @@ a:link {
 }
 /* visited link */
 a:visited {
-	color: #FF00FF;
+	color: #00FF00;
 }
 
 #subtext{

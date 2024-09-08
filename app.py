@@ -1,15 +1,59 @@
+from dis import show_code
+
 from flask import Flask, render_template, jsonify, request
 from strategies import strategies
 from maxims import maxims
 from proverbios import proverbios_text
+from tao import get_tao
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Mapped, mapped_column
 import requests
+import random
 
 app = Flask(__name__)
-
 USE_REAL_API = True
+
+
+### SQLAlchemy stuff ###
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///stats.db'
+class Base(DeclarativeBase):
+  pass
+db = SQLAlchemy(model_class=Base)
+db.init_app(app)
+
+class Stat(db.Model):
+    page: Mapped[str] = mapped_column(primary_key=True)
+    viewcount: Mapped[int] = mapped_column()
+
+    def __repr__(self):
+        return self.page
+
+with app.app_context():
+    db.create_all()
+
+def add_page_view(page):
+    q = db.session.execute(db.select(Stat).filter_by(page=page)).scalars()
+    first = q.first()
+    if first:
+        p = first
+        p.viewcount += 1
+    else:
+        p = Stat(page=page, viewcount=1)
+    db.session.add(p)
+    print(p.viewcount)
+    db.session.commit()
+
+def get_views():
+    q = db.session.execute(db.select(Stat)).scalars().all()
+    return ['%s: %s' % (s.page, s.viewcount) for s in q]
+
+### END SQLAlchemy stuff ###
+
 
 @app.route('/get-strategy', methods=['POST'])
 def get_strategy():
+    add_page_view('/get-strategy')
     data = request.json
 
     if USE_REAL_API:
@@ -42,6 +86,7 @@ def get_strategy():
 
 @app.route('/oblique')
 def oblique():
+    add_page_view('/oblique')
     # return oblique_strategies.html template
     wait_time = 30
 
@@ -50,17 +95,34 @@ def oblique():
 
 @app.route('/delphi')
 def delphi():
+    add_page_view('/delphi')
     return render_template('delphi.html', entrance=maxims[:3], maxims=enumerate(maxims[3:]), show_title_icon=True)
 
 
 @app.route('/proverbios')
 def proverbios():
-    print(type(proverbios))
+    add_page_view('/proverbios')
     return render_template('proverbios.html', proverbios=proverbios_text, show_title_icon=True)
+
+
+@app.route('/tao')
+def tao_te_ching():
+    add_page_view('/tao')
+    return render_template('tao.html', tao=get_tao(), show_title_icon=True)
+
+
+@app.route('/tao-random')
+def random_tao():
+    add_page_view('/tao-random')
+    tao = get_tao()
+    i = random.randint(0, len(tao) - 1)
+    verse = tao[i]
+    return render_template('tao_random.html', verse=verse, i=i+1, show_title_icon=True)
 
 
 @app.route('/')
 def index():
+    add_page_view('/')
     return render_template('index.html', show_title_icon=True)
 
 

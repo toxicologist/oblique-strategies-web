@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Tao te Ching - Random Verse{% endblock %}
+{% set bgnum = range(4) | random %}
+{% block css %}
+    <style>
+    body{font-size: 150%;}
+    pre{margin: auto; width:fit-content; height: fit-content;text-shadow: 2px 2px 8px lightgray;}
+
+    html{
+        background-image: url("/static/bgs/{{ bgnum }}.gif");
+        background-repeat: repeat;
+    }
+
+    body{
+        background-color: rgba(255,255,255,0);
+    }
+    p{
+        margin-top: 0em;  /* Reduz a margem superior */
+        margin-bottom: 0em;  /* Reduz a margem inferior */
+        white-space: pre-wrap;
+    }
+</style>{% endblock %}
+{% block content %}
+    <h2>{{ i }}</h2>
+<pre>
+{{ verse|safe }}
+</pre>
+    <img src="/static/imgs/ouroboros.gif">
+{% endblock %}
