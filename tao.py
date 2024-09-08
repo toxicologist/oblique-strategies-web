@@ -14,7 +14,7 @@ def get_tao():
 
     for file in files:
         if file.endswith('.md'):
-            with open(f'tao/{file}') as f:
+            with open(f'tao/{file}', encoding='utf-8') as f:
                 text = f.read()
                 html = markdown.markdown(text)
                 html = '\n'.join([remove_chars(line, '[]^123456789¹²³') for line in html.splitlines() if '[' not in line[:6] and ']' not in line[:6]])
