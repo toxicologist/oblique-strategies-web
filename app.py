@@ -127,6 +127,7 @@ def tao_te_ching():
 def random_tao():
     tao = get_tao()
     i = random.randint(0, len(tao) - 1)
+    print("Hi. Random tao. Our integer choice was:", str(i))
     verse = tao[i]
     print("hello")
     return render_template('tao_random.html', verse=verse, i=i+1, show_title_icon=True)
