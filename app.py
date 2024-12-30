@@ -10,7 +10,7 @@ from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped, mapped_column
 from flask_caching import Cache
 import requests
-import random
+import secrets
 
 app = Flask(__name__)
 USE_REAL_API = True
@@ -126,7 +126,8 @@ def tao_te_ching():
 @app.route('/tao-random')
 def random_tao():
     tao = get_tao()
-    i = random.randint(0, len(tao) - 1)
+    #i = random.randint(0, len(tao) - 1)
+    i = secrets.randbelow(len(tao))
     print("Hi. Random tao. Our integer choice was:", str(i))
     verse = tao[i]
     print("hello")
